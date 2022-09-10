@@ -13,3 +13,7 @@ class(a)
 class(p)
 b=-1.2
 class(b)
+#data types in R 
+
+x=c(1,2,3)
+class(x)

@@ -1,3 +1,4 @@
+####+++++++++++++++Fall 2022/ITC 255++++++++++++#
 x=-1
 y=12
 
@@ -17,3 +18,7 @@ class(b)
 
 x=c(1,2,3)
 class(x)
+
+##Data types in R
+y='text'
+class(y)

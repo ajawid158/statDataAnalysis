@@ -69,5 +69,23 @@ str(df)
 df[1,]
 df[,2]
 
-###3. 
+###3. Uploading data into Rstudio
+#from a local disk 
+dfTips=read.csv('iris.csv')
+head(dfTips)
 
+#from website
+dfTips=read.csv(url('https://raw.githubusercontent.com/mwaskom/seaborn-data/master/tips.csv'))
+head(dfTips)
+
+##4. Control structures
+#sequencing
+#read
+#chose the variable
+#analyze 
+#output
+
+gender=dfTips$sex
+table(gender)
+tableGender=prop.table(table(gender))
+write.table(tableGender)

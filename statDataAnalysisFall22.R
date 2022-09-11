@@ -89,3 +89,5 @@ gender=dfTips$sex
 table(gender)
 tableGender=prop.table(table(gender))
 write.table(tableGender)
+
+#

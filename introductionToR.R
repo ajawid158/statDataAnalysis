@@ -63,6 +63,33 @@ write.csv(dfTips, file = 'tips.csv')
 dfTips=read.csv('tips.csv')
 tail(dfTips)
 
-#
+#Control structures in R
+#sequencing: write the order of the actions 
+             #follow the order
+
+#Selection: select a specific action based on a condition
+
+x=0
+if (x>0){
+  print('Positive')}
+
+
+
+if (x>0) {
+  print('positive')
+} else {
+  print('non-positive')
+}
+
+
+
+if (x>0) {
+  print('positive')
+} else if (x==0){
+      print('zero')
+    } else {
+      print('negative')
+    }
+
 
 

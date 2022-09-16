@@ -64,12 +64,12 @@ dfTips=read.csv('tips.csv')
 tail(dfTips)
 
 #Control structures in R
-#sequencing: write the order of the actions 
+#1 sequencing: write the order of the actions 
              #follow the order
 
-#Selection: select a specific action based on a condition
+#2 Selection: select a specific action based on a condition
 
-x=0
+x=-12
 if (x>0){
   print('Positive')}
 
@@ -91,5 +91,81 @@ if (x>0) {
       print('negative')
     }
 
+##number of real solutions in QE
+#ax^2+bx+c=0
+#delta=b^2-4ac
+
+delta=-1
 
 
+if (delta>0){
+  print('2 real solutions')
+} else if (delta==0){
+  print('1 real solution')
+} else {
+  print('no real solution')
+}
+
+
+
+#3 Loop
+# is use to perform an action repeated/a question is asked until we cover all elemets
+
+
+x=c(-1, 2, 3, -12)
+
+for (i in 1:4) {
+  x[i]=x[i]+12
+}
+x
+
+y=c()
+for (i in 1:4) {
+  y[i]=x[i]+12
+}
+y
+
+##Writing your own functions
+
+#sum
+mySum=function(x){
+  sm=0
+  for (i in 1: length(x)){
+    sm=sm+x[i]
+  }
+  return(sm)
+}
+
+
+x=c(1,2,4)
+mySum(x)
+
+
+#mean
+myMean=function(x){
+  sm=0
+  n=length(x)
+  for (i in 1:length(x)) {
+    sm=sm+x[i]
+  }
+  return(cat('the mean is:', sm/n))
+}
+
+myMean(x)
+
+#max
+myMax=function(x){
+  mx=x[1]
+  for (i in 2:length(x)){
+    if(x[i]>mx){
+      mx=x[i]
+    } else{
+      mx=mx
+    }
+  }
+  return(mx)
+}
+myMax(x)
+
+y=c(-2, 1, 3, 0)
+myMax(y)

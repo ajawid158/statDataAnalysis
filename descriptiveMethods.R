@@ -67,10 +67,65 @@ tipAmount=cbind(dfTips$tip, catTips)
 View(tipAmount)
 
 
-#catTips is a cat var
-#CALL the function fdtCat
-fdtCat(catTips)
 
+
+#Descriptive methods
+  #Univar case 
+    #Graphs 
+      #Categorical vars (pie and bar)
+
+#create the FDT 
+fdtSmoker=fdtCat(dfTips$smoker)[,1]
+fdtSmoker
+
+pie(fdtSmoker, 
+    col = rainbow(2), 
+    main = 'Smoker distribution')
+
+barplot(fdtSmoker, 
+        col=rainbow(2), 
+        main = 'Smoker distribution')
+
+#Descriptive methods
+  #Univar case 
+    #Graphs 
+      #Num vars (hist and density)
+
+hist(dfTips$tip, 
+     col='blue', 
+     main = 'Tips distibution')
+
+plot(density(dfTips$tip), 
+     col='#0033FF', 
+     main='Tips distribution')
+
+#Descriptive methods
+  #Univar case 
+    #Numerical methods
+      #Center of distribution (mean, median)
+
+mean(dfTips$tip)
+median(dfTips$tip)
+
+#Descriptive methods
+  #Univar case 
+    #Numerical methods
+      #variation in the distribution (range, sd, var, mad)
+range(dfTips$tip)
+sd(dfTips$tip)
+var(dfTips$tip)
+mad(dfTips$tip)
+
+#Descriptive methods
+  #Univar case 
+    #Numerical methods
+      #location (quantiles and percentiles)
+quantile(dfTips$tip)
+boxplot(dfTips$tip,
+        horizontal = T, 
+        col='#0033FF')
+boxplot.stats(dfTips$tip) #outliers
+quantile(dfTips$tip, .9)
 
 
 

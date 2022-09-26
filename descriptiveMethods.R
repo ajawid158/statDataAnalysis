@@ -150,6 +150,6 @@ ecdf(dfTips$total_bill)(15)
 
 quantile(dfTips$total_bill, .3)
 
-##Data Manipulation dplyr
+##Data Manipulation dplyr yes
 
 

@@ -132,6 +132,7 @@ quantile(dfTips$total_bill, .4)
 
 dim(dfTips)
 #write a fun that retuns any location in the dist
+
 myQnt=function(x,q){
   pr=quantile(x, q)
   return(pr)

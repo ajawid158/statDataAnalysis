@@ -126,9 +126,29 @@ boxplot(dfTips$tip,
         col='#0033FF')
 boxplot.stats(dfTips$tip) #outliers
 quantile(dfTips$tip, .9)
+plot(density(dfTips$total_bill))
+
+quantile(dfTips$total_bill, .4)
+
+dim(dfTips)
+#write a fun that retuns any location in the dist
+myQnt=function(x,q){
+  pr=quantile(x, q)
+  return(pr)
+}
+myQnt(dfTips$total_bill, .4)
+
+##ECDF 
+plot(ecdf(dfTips$total_bill), 
+     color='blue', 
+     main='ECDF of Total bill', 
+     xlab='total bill')
 
 
+ecdf(dfTips$total_bill)(15)
 
+quantile(dfTips$total_bill, .3)
 
+##Data Manipulation dplyr
 
 

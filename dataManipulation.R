@@ -84,7 +84,8 @@ gender
 #data manipulation with dplyr package
   #sample_n
 dim(dfTips)
-sampledfTips=sample_n(dfTips, 80)
+sampledfTips=sample_n(dfTips, 100)
 head(sampledfTips)
+
 
 

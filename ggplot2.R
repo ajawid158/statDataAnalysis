@@ -33,6 +33,11 @@ g1
 
 
 ###Bar Chart
+dtTips
+library(ggplot2)
+tGender=table(dtTips$sex)
+tGender=as.data.frame(tGender)
+colnames(tGender)=c('Gender', 'Count')
 
 g0=ggplot(tGender, aes(x=Gender, y=Count, fill=Gender))
 g0+geom_bar(stat='identity')+
@@ -47,12 +52,12 @@ g0+geom_bar(stat='identity')+
 ggsave('genderBar.pdf')
 
 ###Histogram
-g0=ggplot(dtTip, aes(x=tip))
+g0=ggplot(dtTips, aes(x=tip))
 g0+geom_histogram(bins = 10, fill='#99FFFF', colour=4)+
   theme_classic()+
   theme(plot.title = element_text(face = 'bold',
                                   hjust = .5), 
-        axis.title = element_text(), 
+        axis.title.x = element_text(), 
         axis.title.y = element_text())+
   ggtitle('Tip Distribution')+
   xlab('Tip Amount')+
@@ -64,7 +69,7 @@ g0+geom_histogram(bins = 10, fill='#99FFFF', colour=4)+
 ggsave('tipDistHist.png')
 
 ###Density plot
-g0=ggplot(dtTip, aes(x=tip))
+g0=ggplot(dtTips, aes(x=tip))
 g0+geom_density(color='red', size=.6)+
   theme_classic()+
   xlim(0,12)+

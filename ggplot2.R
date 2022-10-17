@@ -4,7 +4,7 @@ library(ggplot2)
 head(dtTips)
 
 
-##Pie chart
+##++++++++++++++++++Pie chart
 #Gender
 
 fdtGender=table(dtTips$sex)
@@ -32,7 +32,7 @@ g1
 
 
 
-###Bar Chart
+###++++++++++++++++++++++Bar Chart
 dtTips
 library(ggplot2)
 tGender=table(dtTips$sex)
@@ -51,7 +51,9 @@ g0+geom_bar(stat='identity')+
   scale_fill_manual(values=c('#FF9933', '#0000CC'))
 ggsave('genderBar.pdf')
 
-###Histogram
+
+###++++++++++++++++++++++++++Histogram
+
 g0=ggplot(dtTips, aes(x=tip))
 g0+geom_histogram(bins = 10, fill='#99FFFF', colour=4)+
   theme_classic()+
@@ -68,7 +70,9 @@ g0+geom_histogram(bins = 10, fill='#99FFFF', colour=4)+
              size=1)
 ggsave('tipDistHist.png')
 
-###Density plot
+
+###++++++++++++++++++++Density plot
+
 g0=ggplot(dtTips, aes(x=tip))
 g0+geom_density(color='red', size=.6)+
   theme_classic()+
@@ -85,6 +89,9 @@ g0+geom_density(color='red', size=.6)+
              color='blue', 
              size=1)
 ggsave('tipDistHist.png')
+
+
+
 
 ###+++++++++++++++++++W7:::17.10.22
 ###+++++++++++++++++++Box Plot
@@ -109,8 +116,9 @@ g0+geom_boxplot(fill=4,
 ggsave('boxplotTip.png')
 
 
-###+++++++++++++++++++Joint graphs
 
+###+++++++++++++++++++Joint graphs
+#Gender[F, M] and Smoker[Y, N] 
 
 jtable=table(dtTip$sex, dtTip$smoker)
 jtable=as.data.frame(jtable)
@@ -131,16 +139,14 @@ ggplot(jtable, aes(x=Var1, y=Freq, fill=Var2))+
 ggsave('jointBarGenderSmoke.pdf')
 
 
-
-names(dtTip)
 ####+++++++++++++++++++Joint density 
-
+##Gender[F, M]  tip
 
 g0=ggplot(dtTip, aes(x=tip, color=sex))
 g0+geom_density()+
   theme_replace()+
   scale_color_manual(values = c('red', 'blue'))+
-  xlim(-1,10)+
+  xlim(-1,11)+
   theme(plot.title = element_text(face = 'bold', 
                                   hjust = .5), 
         axis.title.x = element_text(),
@@ -149,16 +155,15 @@ g0+geom_density()+
   ggtitle('Joint distribution of Tip amount across Gender')+
   xlab('Tib Amount')+
   theme(legend.position = 'bottom')
-
+ggsave('jointDensity.png')
 
 #####+++++++++++++++++++Ridgeline plot
-
-
-install.packages('ggridges')
+#smoker[y, n] tip
+#install.packages('ggridges')
 library(ggridges)
-names(dtTip)
+
 ggplot(dtTip, aes(x=tip, y=smoker, fill=smoker))+
-  geom_density_ridges2(color=4, 
+  geom_density_ridges(color=4, 
                        lwd=.3)+
   theme_gray()+
   theme(plot.title = element_text(face = 'bold', 
@@ -168,9 +173,12 @@ ggplot(dtTip, aes(x=tip, y=smoker, fill=smoker))+
         legend.title = element_text(color='blue'))+
   ggtitle('Joint dist of Tip and Smoker')+
   xlab('Tip Amount')
+ggsave('jointDistTipsSmoker.png')
 
 
 ######+++++++++++++++++++Joint box plot
+#Gender[y,N] tip
+
 
 ggplot(dtTip, aes(x=tip, y=sex, fill=sex))+
   geom_boxplot(color=2, 
@@ -186,11 +194,11 @@ ggplot(dtTip, aes(x=tip, y=sex, fill=sex))+
         axis.title.x = element_text(),
         axis.title.y = element_text(), 
         legend.title = element_text(color='blue'))+
-  ggtitle('Joint dist of Tip and Smoker')+
+  ggtitle('Joint dist of Tip and Gender')+
   xlab('Tip Amount')+
   ylab('Gender')+
   xlim(-1,11)
-
+ggsave('jointboxplot.png')
 ######+++++++++++++++++++boxplot with points
 
 boxplot(dtTip$tip, col = 'white', horizontal = T)
@@ -201,21 +209,25 @@ stripchart(dtTip$tip,
            add = TRUE)
 
 ######+++++++++++++++++++Joint boxplot
+##Gender[y,n] tip
 
-
-boxplot(tip~sex, data = dtTip, col='white', horizontal = T)
+boxplot(tip~sex,
+        data = dtTip,
+        col='white',
+        horizontal = T)
 stripchart(tip~sex,
            data = dtTip,
            method = 'jitter', 
            pch=19, 
            col=2:4,
            add = TRUE)
-
+ggsave('jointboxplotwithpoints.pdf')
 ####+++++++++++++++++++Beeswarm graph
 
-install.packages('ggbeeswarm')
-library(ggbeeswarm)
+##install.packages('ggbeeswarm')
 
+library(ggbeeswarm)
+#smoker[y, n] tip
 
 ggplot(dtTip, aes(x=smoker, y=tip, color=smoker))+
   geom_beeswarm(cex=1)

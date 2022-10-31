@@ -234,6 +234,79 @@ ggplot(dtTip, aes(x=smoker, y=tip, color=smoker))+
 
 
 
+#ggplot2-conti
+#31.10.2022
+setwd("C:/Users/Jawid/Desktop/R/stat1")
+dtTip=read.csv('tips.csv')
+names(dtTip)
+dim(dtTip)
+##Scatter plot 
+library(ggplot2)
+names(dtTip)
+#2 QNT vars
+g0=ggplot(dtTip, aes(x=total_bill, y=tip))
+g0+geom_point()
+
+#modifications inside geom_point
+g0=ggplot(dtTip, aes(x=total_bill, y=tip))
+g0+geom_point(color=3, shape=20, size=3)
+
+names(dtTip)
+#Modifications in aes
+g0=ggplot(dtTip, aes(x=total_bill, y=tip, color=sex))
+g0+geom_point()
+
+#Modifications in both 
+g0=ggplot(dtTip, aes(x=total_bill, y=tip, alpha=size))
+g0+geom_point(color=2)
+
+#Adding a vertical line and size
+g0=ggplot(dtTip, aes(x=total_bill, y=tip,color=time, size=size))
+g0+geom_point()+
+  geom_vline(xintercept = 40, linetype='dashed')+
+  geom_hline(yintercept = 5, linetype='dashed')
+
+#Adding Facet:
+g0+geom_point()+
+  facet_wrap(~day)
+
+g0=ggplot(dtTip, aes(x=total_bill, y=tip, color=sex, size=size))
+g0+geom_point()+
+  facet_wrap(~smoker)
+
+##Adding Regression line
+g0=ggplot(dtTip, aes(x=total_bill, y=tip))
+g0+
+  geom_smooth()
+
+g0=ggplot(dtTip, aes(x=total_bill, y=tip, group=sex))
+g0+geom_smooth()+
+  geom_point()
+
+
+#Adding more detials
+g0=ggplot(dtTip, aes(x=total_bill, y=tip, color=sex))
+g1=g0+geom_smooth(se=FALSE)+
+  geom_point(mapping = aes(color=smoker))+
+  theme_bw()+
+  theme(axis.title.x = element_text(), 
+        axis.title.y = element_text(), 
+        plot.title = element_text(hjust = .5), 
+        legend.title = element_blank())+
+  ggtitle('Scatter plot total_bill/tip')+
+  xlab('Total Bill in USD')+
+  ylab('Tip Amount')+
+  theme(legend.position = 'bottom')
+g1
+
+##Export as html and ggplotly
+#install.packages('plotly')
+library(plotly)
+
+g2=plotly::ggplotly(g1)
+htmlwidgets::saveWidget(g2, 
+                        file = 'scatter.html')
+
 
 
 

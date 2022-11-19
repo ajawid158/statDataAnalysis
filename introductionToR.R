@@ -169,3 +169,7 @@ myMax(x)
 
 y=c(-2, 1, 3, 0)
 myMax(y)
+
+
+##monte carlo simulation
+x=c(0,1,0.5)
